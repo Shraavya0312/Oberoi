@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="../static/reg.css" />
+  <!-- Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <style>
+    #map {
+      height: 600px;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+
+  
+  <div class="container">
+  <header class="header">
+      <div class="brand-container">
+          <i class="fas fa-bolt"></i>
+          <h1>Charge MAP</h1>
+      </div>
+      <nav class="navbar">
+          <a href="/map" class="nav-link active">Map</a>
+          <a href="/reg" class="nav-link ">Register Your House</a>
+        <a href="/dashboard" class="nav-link">Dashboard</a>
+        <a href="/logout" class="nav-link">Logout</a>
+      </nav>
+  </header>
+    
+  <div id="map"></div>
+
+    <script>
+    // Array of EV charging station data
+    const evStations = [
+      {
+        name: "Station 1",
+        lat: 13.17,
+        lng: 77.5965,
+        description: "Located in the city center.",
+        image: "../static/unnamed.png",
+        availability: "24/7",
+        chargerType: "Fast Charger",
+        phoneNumber: "123-456-7890",
+        price: "9 Rs/kWh",
+        paymentLink: "https://paymentgateway.example.com/station1"
+      },
+      {
+        name: "Station 2",
+        lat: 13,
+        lng: 77,
+        description: "Next to the shopping mall.",
+        image: "../static/unnamed.png",
+        availability: "9 AM - 9 PM",
+        chargerType: "Standard Charger",
+        price: "5 Rs/kWh",
+        phoneNumber: "098-765-4321",
+        paymentLink: "https://paymentgateway.example.com/station2"
+      }
+      // Add more stations as needed
+    ];
+
+    document.addEventListener('DOMContentLoaded', function () {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        var currentLocation = [position.coords.latitude, position.coords.longitude];
+
+        // Initialize the map on the current location
+        var map = L.map('map').setView(currentLocation, 13);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Marker and popup for current location
+        L.marker(currentLocation).addTo(map)
+          .bindPopup('<strong>Your Current Location</strong>').openPopup();
+
+        // Loop through each station and add a marker with a styled popup
+        evStations.forEach(station => {
+          var popupContent = `
+            <div style="font-family: Arial, sans-serif; text-align: left;">
+              <h2 style="color: #0078A8;">${station.name}</h2>
+              <p><strong>Description:</strong> ${station.description}</p>
+              <img src="${station.image}" alt="Photo of ${station.name}" style="width:100%; margin-bottom: 10px;">
+              <p><strong>Availability:</strong> ${station.availability}</p>
+              <p><strong>Type of Charger:</strong> ${station.chargerType}</p>
+              <p><strong>Price:</strong> ${station.price}</p>
+              <p><strong>Phone:</strong> ${station.phoneNumber}</p>
+              <a href="${station.paymentLink}" target="_blank" style="display: inline-block; background: #4CAF50; color: white; padding: 8px 12px; text-align: center; text-decoration: none; border-radius: 4px; font-size: 16px;">Pay Here</a>
+            </div>
+          `;
+
+          // Create a marker and bind the popup
+          L.marker([station.lat, station.lng]).addTo(map).bindPopup(popupContent);
+        });
+      }, function(error) {
+        console.error("Geolocation failed: ", error);
+        alert('Unable to retrieve your location. Please check your settings and try again.');
+      });
+    });
+    </script>
+    <script>
+        window.embeddedChatbotConfig = {
+        chatbotId: "vaW-pmYFzoYfZbNhXmn33",
+        domain: "www.chatbase.co"
+        }
+        </script>
+        <script
+        src="https://www.chatbase.co/embed.min.js"
+        chatbotId="vaW-pmYFzoYfZbNhXmn33"
+        domain="www.chatbase.co"
+        defer>
+    </script>
+
+</body>
+</html>

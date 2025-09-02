@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Appointment Dashboard</title>
+    <link rel="stylesheet" href="../static/dashboad.css">
+</head>
+<body>
+    <header class="header">
+        <div class="brand-container">
+            <i class="fas fa-bolt"></i>
+            <h1>Charge MAP</h1>
+        </div>
+        <nav class="navbar">
+            <a href="/map" class="nav-link">Map</a>
+            <a href="/reg" class="nav-link ">Register Your House</a>
+          <a href="/dashboard" class="nav-link active">Dashboard</a>
+          <a href="/logout" class="nav-link">Logout</a>
+        </nav>
+    </header>
+    <div id="appointments-container" class="container">
+        <!-- Appointments will be loaded here by JavaScript -->
+    </div>
+    <footer>
+        Total Estimated Revenue: $<span id="revenue">0</span>
+    </footer>
+    <script src="../static/dashboard.js"></script>
+</body>
+</html>

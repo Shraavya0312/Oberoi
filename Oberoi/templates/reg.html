@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EV Charge Station Registration</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="../static/reg.css">
+</head>
+<body>
+  
+
+<div class="container">
+    <header class="header">
+        <div class="brand-container">
+            <i class="fas fa-bolt"></i>
+            <h1>Charge MAP</h1>
+        </div>
+        <nav class="navbar">
+            <a href="/map" class="nav-link">Map</a>
+            <a href="/reg" class="nav-link active">Register Your House</a>
+          <a href="/dashboard" class="nav-link">Dashboard</a>
+          <a href="/logout" class="nav-link">Logout</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="registration-section">
+            <h2>Register Your Charging Station</h2>
+            <p class="intro-text">Join our network and make your charging station visible to EV drivers in your area.</p>
+
+            <form id="registrationForm" class="form-styled" action="/reg" method="post" >
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" placeholder="Enter your address" required>
+                </div>
+
+              <div class="form-row">
+                  <div class="form-group form-half">
+                      <label for="latitude">Latitude</label>
+                      <input type="text" id="latitude" name="xcoor" placeholder="Enter latitude" required>
+                  </div>
+                  <div class="form-group form-half">
+                      <label for="longitude">Longitude</label>
+                      <input type="text" id="longitude" name="ycoor" placeholder="Enter longitude" required>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="proofOfID">Proof of ID</label>
+                <button type="button" id="chooseFileBtn1" class="custom-file-input">Choose File</button>
+                <input type="file" id="proofOfID" name="proofOfID" class="file-input" required>
+                  <span class="file-chosen">No file chosen</span>
+              </div>
+
+              <div class="form-group">
+                  <label for="proofOfStation">Proof of Charging Station</label>
+                <button type="button" id="chooseFileBtn2" class="custom-file-input">Choose File</button>
+                <input type="file" id="proofOfStation" name="proofOfStation" class="file-input" required>
+                  <span class="file-chosen">No file chosen</span>
+              </div>
+
+
+                <button class="submit-btn">Submit Application</button>
+            </form>
+        </section>
+    </main>
+</div>
+
+
+  <script>
+  document.getElementById('chooseFileBtn1').addEventListener('click', function () {
+      document.getElementById('proofOfID').click();
+  });
+  document.getElementById('proofOfID').addEventListener('change', function () {
+      document.querySelector('span.file-chosen').textContent = this.files[0].name;
+  });
+
+  document.getElementById('chooseFileBtn2').addEventListener('click', function () {
+      document.getElementById('proofOfStation').click();
+  });
+  document.getElementById('proofOfStation').addEventListener('change', function () {
+      document.querySelectorAll('span.file-chosen')[1].textContent = this.files[0].name;
+  });
+  </script>
+
+<!--   
+<script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        displayConfirmation();
+    });
+
+    function displayConfirmation() {
+    
+        const form = document.getElementById('registrationForm');
+        form.innerHTML = '<div class="confirmation-message">Thank you for your submission. We will review your application and verify it shortly.</div>';
+    }
+</script> -->
+<script>
+    window.embeddedChatbotConfig = {
+    chatbotId: "vaW-pmYFzoYfZbNhXmn33",
+    domain: "www.chatbase.co"
+    }
+    </script>
+    <script
+    src="https://www.chatbase.co/embed.min.js"
+    chatbotId="vaW-pmYFzoYfZbNhXmn33"
+    domain="www.chatbase.co"
+    defer>
+</script>
+
+</body>
+</html>

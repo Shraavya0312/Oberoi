@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" crossorigin="anonymus">
+  <link rel="stylesheet" type="text/css" href="../static/login.css" />
+  <title>Login/SignUp</title>
+</head>
+
+<body>
+    {% if get_flashed_messages() %}
+        <center>
+        <header>
+            <div style="background-color: red; opacity: 80%; margin-bottom: 50px; padding: 15px; width: 100%; text-align: center; font-size: 15px; " role="alert">
+                {{ get_flashed_messages() | join(" ") }}
+            </div>
+        </header>
+        </center>
+        {% endif %}
+  <img src="../static/logo.png" alt="chargemap-logo" id="logo" style="width: 40%; height: auto; margin-top: -100px; ">
+
+  <div class="ripple-background">
+    <div class="circle xxlarge shade1"></div>
+    <div class="circle xlarge shade2"></div>
+    <div class="circle large shade3"></div>
+    <div class="circle medium shade4"></div>
+    <div class="circle small shade5"></div>
+  </div>
+
+  <div class="container" id="container">
+    <div class="form-container sign-up-container">
+      <form action="/signup" method="post">
+        <h1>Create Account</h1>
+        <br>
+
+        <input type="username" placeholder="Name" name="username"/>
+        <input type="email" placeholder="Email" name="email"/>
+        <input type="password" placeholder="Password" name="password"/>
+        <br>
+        <button>Sign Up</button>
+      </form>
+    </div>
+    <div class="form-container sign-in-container">
+      <form action="/" method="post">
+        <h1>Sign in</h1>
+        <br>
+        <input type="username" placeholder="Username" name="username"/>
+        <input type="password" placeholder="Password" name="password"/>
+        <br>
+        <button>Sign In</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>Welcome Back!</h1>
+          <p>To keep connected with us please login with your personal info</p>
+          <button class="ghost" id="signIn" onclick="container.classList.remove('right-panel-active');">Sign In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>Welcome to ChargeMap</h1>
+          <p id="details-message">Enter your details and join our amazing community.</p>
+          <button class="ghost" id="signUp" onclick="container.classList.add('right-panel-active');">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.embeddedChatbotConfig = {
+    chatbotId: "vaW-pmYFzoYfZbNhXmn33",
+    domain: "www.chatbase.co"
+    }
+    </script>
+    <script
+    src="https://www.chatbase.co/embed.min.js"
+    chatbotId="vaW-pmYFzoYfZbNhXmn33"
+    domain="www.chatbase.co"
+    defer>
+</script>
+
+</body>
+
+</html>
